@@ -40,8 +40,10 @@ LastfmAPI.prototype = {
         this.get('user.recenttracks', {user: user}, function(response) {
             var track = response.recenttracks.track[0];
             
-            if (track && track['@attr'] && track['@attr'].nowplaying) {
+            var fifteenMinsAgo = (+new Date() / 1000) - 900; // unix timestamp for now, minus 15 mins
+            if (track.nowplaying || !track.date || (track && track.date.uts >= fifteenMinsAgo)) {
                 success(track);
+                console.log(track);
             }
             else {
                 success(false);

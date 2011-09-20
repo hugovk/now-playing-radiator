@@ -28,7 +28,7 @@
             // format: #username, or #!/user/username, prompt fallback
             return document.location.hash.split('/')[2] || 
                            document.location.hash.substring(1) || 
-                           prompt('Enter a Last.fm username?');
+                           'iftfom'
         };
     
         $(document).ready(function() {        
@@ -45,6 +45,7 @@
         window.onhashchange = function(event) {
             username = get_username();
             if (username != np.user) {
+				np.lastUser = np.user;
                 np.user = username;
                 np.update();
             }
@@ -58,22 +59,24 @@
 <body>
     
     <div id="page" class="inactive">
-        
+
         <header>
-            Now Playing
+			<div class="colophon">
+				 By <a href="http://twitter.com/dsingleton">@dsingleton</a> on <a href="https://github.com/dsingleton/now-playing-radiator">Github</a>. Hacked to bits by <a href="http://twitter.com/dsingleton">@flaneur</a> for <a href="http://iftfom.org">IFTFOM</a>.
+			</div>
+            <div class="header">
+				Now Playing at IFTFOM (London, UK):
+				<br><a href="#theechonest">Switch to Somerville</a>
+			</div>
         </header>
 
         <article>
             <h1>
-                <span id="artist">Artist</span>
-                <span class="separator">&mdash;</span> 
-                <span id="track">Track</span>
+				<span id="track">Track</span> <br>
+                <span id="artist"><span class="separator">by </span> Artist</span>
             </h1>
         </article>
 
-        <footer>
-            By <a href="http://twitter.com/dsingleton">@dsingleton</a> on <a href="https://github.com/dsingleton/now-playing-radiator">Github</a>
-        </footer>
         
     </div>
 </body>
