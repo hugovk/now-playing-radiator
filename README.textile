@@ -1,8 +1,14 @@
 h1. Now playing radiator
 
-A  _second screen/information radiator/glancable_ for a Last.fm users now-playing track.
+A  _second screen/information radiator/glancable_ for a Last.fm user's now-playing track.
+
+Dan Singleton's original version looks like this:
 
 !http://farm7.static.flickr.com/6198/6086155862_ed082dee0f.jpg!:http://www.flickr.com/photos/davidsingleton/6086155862/
+
+This version is forked from [Matt Ogle's hacks for IFTFOM](https://github.com/echonest/now-playing-radiator/) that has the artist image in the background, but allows you to enter any username (and has the IFTFOM/Echo Nest hardcodings and specialisations removed).
+
+Original blurb:
 
 Handy knowing what's playing without having iTunes open, an information radiator for a shared office radio, 'now playing' screen at an awesome party. It's also&hellip;
 
@@ -11,14 +17,3 @@ Handy knowing what's playing without having iTunes open, an information radiator
 * Totally real time - Well, it's polling, but it feels pretty snappy.
 
 "Read more":http://dsingleton.co.uk/blog/last-fm-now-playing-information-radiator about it or try the "sweet demo":http://dsingleton.github.com/now-playing-radiator.
-
-h2. Todo
-
-Some small and large improvements I plan make, in rough order:
-
-* Position footer absolutely, to avoid it jumping about
-* Add page context username/link to top header
-* Adjust default font sizes on extreme devices (mobile / large monitors) for optimal line length
-* Improved context in title bar for easy tab referencing
-* Improve speed of track change. Smart polling, setup an additional, higher frequency, polling window around the track end (based on duration)
-* Adding more metadata (album art, bio, tags, etc) but keep the default view minimal. Probably a click/key interaction that launches a modal.

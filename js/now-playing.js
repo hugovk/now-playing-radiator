@@ -70,18 +70,7 @@ NowPlaying.prototype = {
             var status = 'Now playing';
         else
             var status = 'Last played';
-        
-        if (this.user == 'iftfom') {
-            var head = status + " at IFTFOM (London, UK):";
-            head += '<br><a href="#theechonest">Switch to Somerville</a>';
-        }
-        else if (this.user == 'theechonest') {
-            var head = status + " at Echo Nest HQ (Somerville, MA):";
-            head += '<br><a href="#iftfom">Switch to London</a>';
-        }
-        else {
-            var head = status + ":";
-        }
+        var head = status + ":";
         $('.header').html(head);
     }
 };
