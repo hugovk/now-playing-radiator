@@ -78,3 +78,7 @@ h1 {
 h1 .separator, h1 #track {
     font-weight: normal;
 }
+
+#artwork {
+    background:center right no-repeat;
+}

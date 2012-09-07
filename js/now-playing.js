@@ -10,11 +10,20 @@ NowPlaying = function(api, user, interval) {
 NowPlaying.prototype = {
     
     display: function(track)
-    {        
-        if (track.artist == ' ') { // clear background
+    {
+        if (track.artist == ' ') { // clear images
+            $('#track-artwork img').hide();
             $('body').css("background-image", "");
+            $('#artwork').css("background-image", "");
         }
         else if (track.artist != this.lastArtist || this.lastUser != this.user) {
+            if (track.artwork && track.artwork.length) {
+                $('#artwork').css("background-image", "url('" + track.artwork + "')");
+                }
+            else {
+                $('#artwork').css("background-image", "");
+            }
+            
             // sneaky image one-liner borrowed from TwitSpace™
             var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=b25b959554ed76058ac220b7b2e0a026&size=original";
             $('body').css("background-image", "url('" + image + "')");
@@ -55,6 +64,7 @@ NowPlaying.prototype = {
                 // The API response can vary depending on the user, so be defensive
                 artist: response.artist['#text'] || response.artist.name,
                 name: response.name,
+                artwork: response.image[3]['#text'] || null,
                 nowplaying: nowplaying
             });
         }

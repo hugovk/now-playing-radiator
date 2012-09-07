@@ -1,5 +1,5 @@
 /* 
- * A simple wraper to basic Last.fm API functionality
+ * A simple wrapper to basic Last.fm API functionality
  *
  * Only supports GET and unauthenticated methods, which is 90% of what you 
  * need usually, reliant on jquery.
