@@ -6,7 +6,8 @@ David Singleton's original version looks like this:
 
 !http://farm7.static.flickr.com/6198/6086155862_ed082dee0f.jpg!:http://www.flickr.com/photos/davidsingleton/6086155862/
 
-This version is forked from "Matt Ogle's hacks for IFTFOM":https://github.com/echonest/now-playing-radiator/ that has the artist image in the background, but allows you to enter any username (and has the IFTFOM/Echo Nest hardcodings and specialisations removed).
+This version is forked from "Matt Ogle's hacks for IFTFOM":https://github.com/echonest/now-playing-radiator/ that has the artist image in the background, but allows you to enter any username (and has the IFTFOM/Echo Nest hardcodings and specialisations removed), and with added album art. Try the "sweet demo":http://hugovk.github.com/now-playing-radiator.
+
 
 h2. Original blurb
 
