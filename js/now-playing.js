@@ -28,10 +28,14 @@ NowPlaying.prototype = {
             var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=b25b959554ed76058ac220b7b2e0a026&size=original";
             $('body').css("background-image", "url('" + image + "')");
         }
-        if (track.artist != ' ')
+        if (track.artist != ' ') {
             $('#artist').html('<span class="separator">by </span> ' + track.artist);
-        else
+            document.title = track.artist + " - " + track.name;
+            }
+        else {
             $('#artist').html('<span class="separator">[silence]</span>');
+            document.title = "Now Playing";
+            }
         $('#track').text(track.name);
         if (track.artist != ' ')
             this.lastArtist = track.artist;
