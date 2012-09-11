@@ -82,3 +82,10 @@ h1 .separator, h1 #track {
 #artwork {
     background:center right no-repeat;
 }
+#artwork a {
+    color: #FFF;
+    text-decoration: none;
+}
+#artwork  a:hover{
+    text-decoration: underline;
+}

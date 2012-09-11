@@ -29,14 +29,14 @@ NowPlaying.prototype = {
             $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
-            $('#artist').html('<span class="separator">by </span> ' + track.artist);
+            $('#artist').html('<span class="separator">by </span> <a href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
             document.title = track.artist + " - " + track.name;
             }
         else {
             $('#artist').html('<span class="separator">[silence]</span>');
             document.title = "Now Playing";
             }
-        $('#track').text(track.name);
+        $('#track').html('<a href="http://last.fm/music/' + encodeURI(track.artist) + '/_/' + encodeURI(track.name) + '">' + track.name + '</a>');
         if (track.artist != ' ')
             this.lastArtist = track.artist;
         this.updateHeader(track);
