@@ -2,7 +2,9 @@ NowPlaying = function(api, user, interval) {
     this.api = api;
     this.user = user;
     this.lastArtist = '';
-    this.lastUser = '';
+    this.lastTitle  = '';
+    this.lastArtwork = '';
+    this.lastFavicon = '';
     
     /* AutoUpdate frequency - Last.fm API rate limits at 1/sec */
     this.interval = interval || 5;
@@ -15,13 +17,31 @@ NowPlaying.prototype = {
             $('#track-artwork img').hide();
             $('body').css("background-image", "");
             $('#artwork').css("background-image", "");
+            $("#favicon").remove();
+            $('<link id="favicon" rel="shortcut icon" href="images/favicon.ico" />').appendTo('head');
         }
-        else if (track.artist != this.lastArtist || this.lastUser != this.user) {
-            if (track.artwork && track.artwork.length) {
+        else if (track.artist != this.lastArtist && track.name != this.lastTitle) {
+
+            // Check artwork
+            if (track.artwork && track.artwork.length &&
+                track.artwork != this.lastArtwork) {
                 $('#artwork').css("background-image", "url('" + track.artwork + "')");
-                }
+                this.lastArtwork = track.artwork;
+            }
             else {
                 $('#artwork').css("background-image", "");
+            }
+            
+            // Check favicon
+            if (track.favicon && track.favicon.length &&
+                track.favicon != this.lastFavicon) {
+                $("#favicon").remove();
+                $('<link id="favicon" rel="shortcut icon" href="' + track.favicon + '" />').appendTo('head');
+                this.lastFavicon = track.favicon;
+                }
+            else {
+                $("#favicon").remove();
+                $('<link id="favicon" rel="shortcut icon" href="images/favicon.ico" />').appendTo('head');
             }
             
             // sneaky image one-liner borrowed from TwitSpace™
@@ -37,8 +57,10 @@ NowPlaying.prototype = {
             document.title = "Now Playing";
             }
         $('#track').html('<a href="http://last.fm/music/' + encodeURI(track.artist) + '/_/' + encodeURI(track.name) + '">' + track.name + '</a>');
-        if (track.artist != ' ')
+        if (track.artist != ' ') {
             this.lastArtist = track.artist;
+            this.lastTitle  = track.name;
+        }
         this.updateHeader(track);
     },
     
@@ -68,6 +90,7 @@ NowPlaying.prototype = {
                 // The API response can vary depending on the user, so be defensive
                 artist: response.artist['#text'] || response.artist.name,
                 name: response.name,
+                favicon: response.image[0]['#text'] || null,
                 artwork: response.image[3]['#text'] || null,
                 nowplaying: nowplaying
             });
