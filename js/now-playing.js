@@ -49,14 +49,18 @@ NowPlaying.prototype = {
             $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
-            $('#artist').html('<span class="separator">by </span> <a href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
+            $('#artist').html('<span class="separator">by </span> <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
             document.title = track.artist + " - " + track.name;
             }
         else {
             $('#artist').html('<span class="separator">[silence]</span>');
             document.title = "Now Playing";
             }
-        $('#track').html('<a href="http://last.fm/music/' + encodeURI(track.artist) + '/_/' + encodeURI(track.name) + '">' + track.name + '</a>');
+        $('#track').html('<a target="linky" href="' + track.url + '">' + track.name + '</a>');
+        if (track.artist && track.name)
+            $('#lyrics').html('<a target="linky" href="http://lyrics.wikia.com/' + encodeURI(track.artist) + ':' + encodeURI(track.name) + '">Lyrics</a>');
+        if (track.album)
+            $('#album').html('| Album: <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '/' + encodeURI(track.album) + '">' + track.album + '</a>');
         if (track.artist != ' ') {
             this.lastArtist = track.artist;
             this.lastTitle  = track.name;
@@ -92,7 +96,9 @@ NowPlaying.prototype = {
                 name: response.name,
                 favicon: response.image[0]['#text'] || null,
                 artwork: response.image[3]['#text'] || null,
-                nowplaying: nowplaying
+                nowplaying: nowplaying,
+                url: response.url,
+                album: response.album['#text'] || null
             });
         }
         else {

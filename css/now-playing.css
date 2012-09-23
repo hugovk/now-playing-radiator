@@ -62,17 +62,13 @@ h1 {
 
 }
 
-#artist,#track {
+#artist,#track,#extras {
     display: inline-block;
     margin: .05em 0;
     padding: .2em .5em;
     border-radius: 2px;
     background: #000;
     opacity: 0.8; 
-}
-
-#track {
-
 }
 
 h1 .separator, h1 #track {
@@ -87,5 +83,16 @@ h1 .separator, h1 #track {
     text-decoration: none;
 }
 #artwork  a:hover{
+    text-decoration: underline;
+}
+
+#extras {
+    color: #555;
+}
+#extras a {
+    color: #555;
+    text-decoration: none;
+}
+#extras a:hover{
     text-decoration: underline;
 }

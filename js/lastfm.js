@@ -41,7 +41,7 @@ LastfmAPI.prototype = {
             var track = response.recenttracks.track[0];
             
             var fifteenMinsAgo = (+new Date() / 1000) - 900; // unix timestamp for now, minus 15 mins
-            if (track.nowplaying || !track.date || track.date.uts >= fifteenMinsAgo) {
+            if (track && (track.nowplaying || !track.date || track.date.uts >= fifteenMinsAgo)) {
                 success(track);
             }
             else {
