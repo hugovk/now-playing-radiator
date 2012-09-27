@@ -37,7 +37,7 @@ LastfmAPI.prototype = {
     
     getNowPlayingTrack: function(user, success, error)
     {
-        this.get('user.recenttracks', {user: user, limit: '1'}, function(response) {
+        this.get('user.recenttracks', {user: user, limit: '2'}, function(response) {
             var track = response.recenttracks.track[0];
             
             var fifteenMinsAgo = (+new Date() / 1000) - 900; // unix timestamp for now, minus 15 mins

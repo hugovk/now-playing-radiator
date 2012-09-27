@@ -58,10 +58,6 @@ footer a {
 
 /** Artist + Track */
 
-h1 {
-
-}
-
 #artist,#track,#extras {
     display: inline-block;
     margin: .05em 0;

@@ -59,8 +59,12 @@ NowPlaying.prototype = {
         $('#track').html('<a target="linky" href="' + track.url + '">' + track.name + '</a>');
         if (track.artist && track.name)
             $('#lyrics').html('<a target="linky" href="http://lyrics.wikia.com/' + encodeURI(track.artist) + ':' + encodeURI(track.name) + '">Lyrics</a>');
+        else
+            $('#lyrics').html('');
         if (track.album)
             $('#album').html('| Album: <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '/' + encodeURI(track.album) + '">' + track.album + '</a>');
+        else
+            $('#album').html('');
         if (track.artist != ' ') {
             this.lastArtist = track.artist;
             this.lastTitle  = track.name;
