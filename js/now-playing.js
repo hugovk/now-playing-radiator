@@ -45,7 +45,7 @@ NowPlaying.prototype = {
             }
             
             // sneaky image one-liner borrowed from TwitSpace™
-            var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=b25b959554ed76058ac220b7b2e0a026&size=original";
+            var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
             $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
