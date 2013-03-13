@@ -5,12 +5,12 @@ NowPlaying = function(api, user, interval) {
     this.lastTitle  = '';
     this.lastArtwork = '';
     this.lastFavicon = '';
-    
+
     /* AutoUpdate frequency - Last.fm API rate limits at 1/sec */
     this.interval = interval || 5;
 };
 NowPlaying.prototype = {
-    
+
     display: function(track)
     {
         if (track.artist == ' ') { // clear images
@@ -31,7 +31,7 @@ NowPlaying.prototype = {
             else {
                 $('#artwork').css("background-image", "");
             }
-            
+
             // Check favicon
             if (track.favicon && track.favicon.length &&
                 track.favicon != this.lastFavicon) {
@@ -43,13 +43,13 @@ NowPlaying.prototype = {
                 $("#favicon").remove();
                 $('<link id="favicon" rel="shortcut icon" href="images/favicon.ico" />').appendTo('head');
             }
-            
+
             // sneaky image one-liner borrowed from TwitSpace™
             var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
             $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
-            $('#artist').html('<span class="separator">by </span> <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
+            $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
             document.title = track.artist + " - " + track.name;
             }
         else {
@@ -71,25 +71,25 @@ NowPlaying.prototype = {
         }
         this.updateHeader(track);
     },
-    
+
     update: function()
     {
         this.api.getNowPlayingTrack(
             this.user,
-            jQuery.proxy(this.handleResponse, this), 
+            jQuery.proxy(this.handleResponse, this),
             function(error) { console && console.log(error); }
         );
     },
-    
+
     autoUpdate: function()
     {
         // Do an immediate update, don't wait an interval period
         this.update();
-        
+
         // Try and avoid repainting the screen when the track hasn't changed
         setInterval(jQuery.proxy(this.update, this), this.interval * 1000);
     },
-    
+
     handleResponse: function(response)
     {
         if (response) {
@@ -109,10 +109,10 @@ NowPlaying.prototype = {
             this.display({artist: ' ', name: ''});
         }
     },
-    
+
     updateHeader: function(track)
     {
-        
+
         if (track.nowplaying)
             var status = 'Now playing';
         else
