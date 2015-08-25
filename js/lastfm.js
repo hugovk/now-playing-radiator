@@ -1,7 +1,7 @@
-/* 
+/*
  * A simple wrapper to basic Last.fm API functionality
  *
- * Only supports GET and unauthenticated methods, which is 90% of what you 
+ * Only supports GET and unauthenticated methods, which is 90% of what you
  * need usually, reliant on jquery.
  *
  * @todo add a error callback, catch and handle lfm errors
@@ -12,7 +12,7 @@ LastfmAPI = function(api_key) {
 };
 LastfmAPI.prototype = {
     root: 'https://ws.audioscrobbler.com/2.0/',
-    
+
     get: function (method, params, success, error)
     {
         jQuery.ajax({
@@ -26,7 +26,7 @@ LastfmAPI.prototype = {
             // Forces JSONP errors to fire, needs re-evaluation if long polling is used
             timeout: 2000
         })
-        .success(function(response) { 
+        .success(function(response) {
             (response.error ? error : success)(response);
         })
         .error(function() {
@@ -34,12 +34,12 @@ LastfmAPI.prototype = {
             console.log({error: 0, message: 'HTTP Error'});
         });
     },
-    
+
     getNowPlayingTrack: function(user, success, error)
     {
-        this.get('user.recenttracks', {user: user, limit: '2'}, function(response) {
+        this.get('user.getrecenttracks', {user: user, limit: '2'}, function(response) {
             var track = response.recenttracks.track[0];
-            
+
             var fifteenMinsAgo = (+new Date() / 1000) - 900; // unix timestamp for now, minus 15 mins
             if (track && (track.nowplaying || !track.date || track.date.uts >= fifteenMinsAgo)) {
                 success(track);
