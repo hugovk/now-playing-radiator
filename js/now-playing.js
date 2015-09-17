@@ -1,9 +1,9 @@
 $.getScript("http://www.myersdaily.org/joseph/javascript/md5.js", function(){
-   //alert("#" + md5("Script loaded but not necessarily executed.").substring(0, 6));
 });
 function dopplr(name) {
     // "we take the MD5 digest of the city’s name, convert it to
     //  hex and take the first 6 characters as a CSS RGB value."
+    // http://everwas.com/2009/03/dopplr-city-colors.html
     return "#" + md5(name).substring(0, 6);
 }
 NowPlaying = function(api, user, interval) {
