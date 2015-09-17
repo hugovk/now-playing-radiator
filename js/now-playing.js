@@ -1,4 +1,4 @@
-$.getScript("http://www.myersdaily.org/joseph/javascript/md5.js", function(){
+$.getScript("js/md5.js", function(){
 });
 function dopplr(name) {
     // "we take the MD5 digest of the city’s name, convert it to
