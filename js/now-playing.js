@@ -21,6 +21,7 @@ NowPlaying.prototype = {
     {
         if (track.artist == ' ') { // clear images
             $('#track-artwork img').hide();
+            $('body').css("background-color", "#999");
             $('body').css("background-image", "");
             $('#artwork').css("background-image", "");
             $("#favicon").remove();
