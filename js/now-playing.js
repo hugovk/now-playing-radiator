@@ -1,3 +1,11 @@
+$.getScript("http://www.myersdaily.org/joseph/javascript/md5.js", function(){
+   //alert("#" + md5("Script loaded but not necessarily executed.").substring(0, 6));
+});
+function dopplr(name) {
+    // "we take the MD5 digest of the city’s name, convert it to
+    //  hex and take the first 6 characters as a CSS RGB value."
+    return "#" + md5(name).substring(0, 6);
+}
 NowPlaying = function(api, user, interval) {
     this.api = api;
     this.user = user;
@@ -25,10 +33,13 @@ NowPlaying.prototype = {
             // Check artwork
             if (track.artwork && track.artwork.length &&
                 track.artwork != this.lastArtwork) {
+                $('body').css("background-image", "url('" + track.artwork + "')");
                 $('#artwork').css("background-image", "url('" + track.artwork + "')");
                 this.lastArtwork = track.artwork;
             }
             else {
+                $('body').css("background-color", dopplr(track.artist));
+                $('body').css("background-image", "");
                 $('#artwork').css("background-image", "");
             }
 
@@ -45,8 +56,8 @@ NowPlaying.prototype = {
             }
 
             // sneaky image one-liner borrowed from TwitSpace™
-            var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
-            $('body').css("background-image", "url('" + image + "')");
+            // var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
+            // $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
             $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
