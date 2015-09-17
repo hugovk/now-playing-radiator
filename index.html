@@ -5,7 +5,7 @@
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Now Playing</title>
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
@@ -14,33 +14,34 @@
     <link rel="stylesheet" href="css/now-playing.css" type="text/css" />
 
     <link id="favicon" rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> 
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="js/lastfm.js"></script>
     <script src="js/now-playing.js"></script>
-    
+    <script src="js/md5.js"></script>
+
     <script>
-    
+
     (function (document) {
-        
+
         var get_username = function() {
             // format: #username, or #!/user/username, prompt fallback
-            return document.location.hash.split('/')[2] || 
-                           document.location.hash.substring(1) || 
+            return document.location.hash.split('/')[2] ||
+                           document.location.hash.substring(1) ||
                            prompt('Enter a Last.fm username:');
         };
-    
-        $(document).ready(function() {        
+
+        $(document).ready(function() {
             // Canonicalise/Persist hash
             document.location.hash = username = get_username();
-        
+
             var api = new LastfmAPI('5f134f063744307ee6f126ac2c480fab');
 
             np = new NowPlaying(api, username);
             np.autoUpdate();
         });
-    
+
         // Needs replacing with a cross browser jquery plugin
         window.onhashchange = function(event) {
             username = get_username();
@@ -50,14 +51,14 @@
                 np.update();
             }
         };
-        
+
     })(document);
-    
+
     </script>
 </head>
 
 <body>
-    
+
     <div id="page" class="inactive">
 
         <header>
@@ -82,7 +83,7 @@
             ]</div>
         </article>
 
-        
+
     </div>
 </body>
 </html>

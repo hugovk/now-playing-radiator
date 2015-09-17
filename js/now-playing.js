@@ -1,5 +1,3 @@
-$.getScript("js/md5.js", function(){
-});
 function dopplr(name) {
     // "we take the MD5 digest of the city’s name, convert it to
     //  hex and take the first 6 characters as a CSS RGB value."
