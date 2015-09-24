@@ -48,5 +48,15 @@ LastfmAPI.prototype = {
                 success(false);
             }
         }, error);
+    },
+
+    getArtistInfo: function(artist, success, error)
+    {
+        this.get('artist.getinfo', {artist: artist}, function(response) {
+            var image = response.artist.image[4]["#text"];
+            if (image) {
+                success(image);
+            }
+        }, error);
     }
 };

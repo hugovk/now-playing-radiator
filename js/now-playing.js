@@ -29,6 +29,13 @@ NowPlaying.prototype = {
         }
         else if (track.artist != this.lastArtist && track.name != this.lastTitle) {
 
+            // Get an artist image from Last.fm
+            this.api.getArtistInfo(
+                track.artist,
+                jQuery.proxy(this.handleResponse, this),
+                function(error) { console && console.log(error); }
+            );
+
             // Check artwork
             if (track.artwork && track.artwork.length &&
                 track.artwork != this.lastArtwork) {
@@ -82,6 +89,12 @@ NowPlaying.prototype = {
         this.updateHeader(track);
     },
 
+    display_artist_image: function(image)
+    {
+        $('body').css("background-image", "url('" + image.image + "')");
+        this.lastArtwork = image.image;
+    },
+
     update: function()
     {
         this.api.getNowPlayingTrack(
@@ -103,17 +116,25 @@ NowPlaying.prototype = {
     handleResponse: function(response)
     {
         if (response) {
-            var nowplaying = response['@attr'] && response['@attr'].nowplaying;
-            this.display({
-                // The API response can vary depending on the user, so be defensive
-                artist: response.artist['#text'] || response.artist.name,
-                name: response.name,
-                favicon: response.image[0]['#text'] || null,
-                artwork: response.image[3]['#text'] || null,
-                nowplaying: nowplaying,
-                url: response.url,
-                album: response.album['#text'] || null
-            });
+            if (response.artist) {
+                var nowplaying = response['@attr'] && response['@attr'].nowplaying;
+                this.display({
+                    // The API response can vary depending on the user, so be defensive
+                    artist: response.artist['#text'] || response.artist.name,
+                    name: response.name,
+                    favicon: response.image[0]['#text'] || null,
+                    artwork: response.image[3]['#text'] || null,
+                    nowplaying: nowplaying,
+                    url: response.url,
+                    album: response.album['#text'] || null
+                });
+            } else {
+                // This'll be the artist image
+                this.display_artist_image({
+                    image: response
+                });
+
+            }
         }
         else {
             this.display({artist: ' ', name: ''});
@@ -122,7 +143,6 @@ NowPlaying.prototype = {
 
     updateHeader: function(track)
     {
-
         if (track.nowplaying)
             var status = 'Now playing';
         else
