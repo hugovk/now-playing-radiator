@@ -62,11 +62,11 @@ NowPlaying.prototype = {
             }
 
             // sneaky image one-liner borrowed from TwitSpace™
-            // var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURI(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
+            // var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURIComponent(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
             // $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
-            $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '">' + track.artist + '</a>');
+            $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="http://last.fm/music/' + encodeURIComponent(track.artist) + '">' + track.artist + '</a>');
             document.title = track.artist + " - " + track.name;
             }
         else {
@@ -75,11 +75,11 @@ NowPlaying.prototype = {
             }
         $('#track').html('<a target="linky" href="' + track.url + '">' + track.name + '</a>');
         if (track.artist && track.name)
-            $('#lyrics').html('<a target="linky" href="http://lyrics.wikia.com/' + encodeURI(track.artist) + ':' + encodeURI(track.name) + '">Lyrics</a>');
+            $('#lyrics').html('<a target="linky" href="http://lyrics.wikia.com/' + encodeURIComponent(track.artist) + ':' + encodeURIComponent(track.name) + '">Lyrics</a>');
         else
             $('#lyrics').html('');
         if (track.album)
-            $('#album').html('| Album: <a target="linky" href="http://last.fm/music/' + encodeURI(track.artist) + '/' + encodeURI(track.album) + '">' + track.album + '</a>');
+            $('#album').html('| Album: <a target="linky" href="http://last.fm/music/' + encodeURIComponent(track.artist) + '/' + encodeURIComponent(track.album) + '">' + track.album + '</a>');
         else
             $('#album').html('');
         if (track.artist != ' ') {
