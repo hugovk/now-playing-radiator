@@ -39,7 +39,6 @@ NowPlaying.prototype = {
             // Check artwork
             if (track.artwork && track.artwork.length &&
                 track.artwork != this.lastArtwork) {
-                $('body').css("background-image", "url('" + track.artwork + "')");
                 $('#artwork').css("background-image", "url('" + track.artwork + "')");
                 this.lastArtwork = track.artwork;
             }
