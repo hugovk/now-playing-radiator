@@ -2,17 +2,17 @@ h1. Now playing radiator
 
 A  _second screen/information radiator/glancable_ for a Last.fm user's now-playing track.
 
-!http://farm9.staticflickr.com/8444/7962127306_29a8604d12.jpg!:http://www.flickr.com/photos/hugovk/7962127306/
+!https://farm9.staticflickr.com/8444/7962127306_29a8604d12.jpg!:https://www.flickr.com/photos/hugovk/7962127306/
 
-!http://farm9.staticflickr.com/8171/7962127624_88a8d5ab72.jpg!:http://www.flickr.com/photos/hugovk/7962127624/
+!https://farm9.staticflickr.com/8171/7962127624_88a8d5ab72.jpg!:https://www.flickr.com/photos/hugovk/7962127624/
 
 
 
-This version is forked from "Matt Ogle's hacks for IFTFOM":https://github.com/echonest/now-playing-radiator/ that has the artist image in the background, but allows you to enter any username (and has the IFTFOM/Echo Nest hardcodings and specialisations removed), and with added album art. Try the "sweet demo":http://hugovk.github.com/now-playing-radiator.
+This version is forked from "Matt Ogle's hacks for IFTFOM":https://github.com/echonest/now-playing-radiator/ that has the artist image in the background, but allows you to enter any username (and has the IFTFOM/Echo Nest hardcodings and specialisations removed), and with added album art. Try the "sweet demo":https://hugovk.github.com/now-playing-radiator.
 
 h2. "David Singleton's original blurb":https://github.com/dsingleton/now-playing-radiator
 
-!http://farm7.static.flickr.com/6198/6086155862_ed082dee0f.jpg!:http://www.flickr.com/photos/davidsingleton/6086155862/
+!https://farm7.static.flickr.com/6198/6086155862_ed082dee0f.jpg!:https://www.flickr.com/photos/davidsingleton/6086155862/
 
 Handy knowing what's playing without having iTunes open, an information radiator for a shared office radio, 'now playing' screen at an awesome party. It's also&hellip;
 
@@ -20,4 +20,4 @@ Handy knowing what's playing without having iTunes open, an information radiator
 * Super adapatable - It renders well on all devices, big monitors, laptops, phones, tablets and even on the kindle.
 * Totally real time - Well, it's polling, but it feels pretty snappy.
 
-"Read more":http://dsingleton.co.uk/blog/last-fm-now-playing-information-radiator about it or try the "sweet demo":http://dsingleton.github.com/now-playing-radiator.
+"Read more":https://dsingleton.co.uk/blog/last-fm-now-playing-information-radiator about it or try the "sweet demo":https://dsingleton.github.com/now-playing-radiator.

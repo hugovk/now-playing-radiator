@@ -7,7 +7,7 @@
  * http://pajhome.org.uk/crypt/md5
  * 
  * Released under the BSD license
- * http://www.opensource.org/licenses/bsd-license
+ * https://www.opensource.org/licenses/bsd-license
  */
 (function() {
 	function md5cycle(x, k) {

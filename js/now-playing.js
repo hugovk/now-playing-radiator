@@ -62,11 +62,11 @@ NowPlaying.prototype = {
             }
 
             // sneaky image one-liner borrowed from TwitSpace™
-            // var image = "http://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURIComponent(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
+            // var image = "https://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURIComponent(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
             // $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist != ' ') {
-            $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="http://last.fm/music/' + encodeURIComponent(track.artist) + '">' + track.artist + '</a>');
+            $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="https://last.fm/music/' + encodeURIComponent(track.artist) + '">' + track.artist + '</a>');
             document.title = track.artist + " - " + track.name;
             }
         else {
@@ -79,7 +79,7 @@ NowPlaying.prototype = {
         else
             $('#lyrics').html('');
         if (track.album)
-            $('#album').html('| Album: <a target="linky" href="http://last.fm/music/' + encodeURIComponent(track.artist) + '/' + encodeURIComponent(track.album) + '">' + track.album + '</a>');
+            $('#album').html('| Album: <a target="linky" href="https://last.fm/music/' + encodeURIComponent(track.artist) + '/' + encodeURIComponent(track.album) + '">' + track.album + '</a>');
         else
             $('#album').html('');
         if (track.artist != ' ') {
