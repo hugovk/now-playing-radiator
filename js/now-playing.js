@@ -100,8 +100,10 @@ NowPlaying.prototype = {
 
     display_album_image: function(imageUrl)
     {
-        $('#artwork').css("background-image", "url('" + imageUrl + "')");
-        this.lastArtwork = imageUrl;
+        if (imageUrl) {
+            $('#artwork').css("background-image", "url('" + imageUrl + "')");
+            this.lastArtwork = imageUrl;
+        }
     },
 
     display_album_name: function(artist, album)
@@ -117,9 +119,11 @@ NowPlaying.prototype = {
 
     set_favicon: function(faviconUrl)
     {
-        $("#favicon").remove();
-        $('<link id="favicon" rel="shortcut icon" href="' + faviconUrl + '" />').appendTo('head');
-        this.lastFavicon = faviconUrl;
+        if (faviconUrl) {
+            $("#favicon").remove();
+            $('<link id="favicon" rel="shortcut icon" href="' + faviconUrl + '" />').appendTo('head');
+            this.lastFavicon = faviconUrl;
+        }
     },
 
     update: function()
