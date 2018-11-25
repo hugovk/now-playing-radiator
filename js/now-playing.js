@@ -83,8 +83,8 @@ NowPlaying.prototype = {
             $('#lyrics').html('');
         if (track.album)
             this.display_album_name(track.artist, track.album);
-        else
-            $('#album').html('');
+        // else
+        //     $('#album').html('');
         if (track.artist != ' ') {
             this.lastArtist = track.artist;
             this.lastTitle  = track.name;
