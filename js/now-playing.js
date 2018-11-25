@@ -44,6 +44,14 @@ NowPlaying.prototype = {
                 $('body').css("background-color", dopplr(track.artist));
                 $('body').css("background-image", "");
                 $('#artwork').css("background-image", "");
+
+                // No album image? Fetch one from Last.fm for this track
+                this.api.getTrackInfo(
+                    track.artist,
+                    track.name,
+                    jQuery.proxy(this.handleTrackInfoResponse, this),
+                    function(error) { console && console.log(error); }
+                );
             }
 
             // Check favicon
@@ -157,6 +165,17 @@ NowPlaying.prototype = {
         }
         else {
             this.display({artist: ' ', name: ''});
+        }
+    },
+
+    handleTrackInfoResponse: function(album)
+    {
+        if (album) {
+            this.display_album_name(album.artist, album.title);
+            if (album.image) {
+                this.display_album_image(album.image[3]['#text'] || null);
+                this.set_favicon(album.image[0]['#text'] || null);
+            }
         }
     },
 

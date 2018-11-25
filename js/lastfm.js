@@ -58,5 +58,15 @@ LastfmAPI.prototype = {
                 success(image);
             }
         }, error);
+    },
+
+    getTrackInfo: function(artist, track, success, error)
+    {
+        this.get('track.getinfo', {artist: artist, track: track}, function(response) {
+            if (response.track.album) {
+                success(response.track.album);
+            }
+        }, error);
     }
+
 };
