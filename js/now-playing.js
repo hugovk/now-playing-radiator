@@ -24,8 +24,7 @@ NowPlaying.prototype = {
             $('body').css("background-color", "#999");
             $('body').css("background-image", "");
             $('#artwork').css("background-image", "");
-            $("#favicon").remove();
-            $('<link id="favicon" rel="shortcut icon" href="images/favicon.ico" />').appendTo('head');
+            this.reset_favicon();
         }
         else if (track.artist != this.lastArtist && track.name != this.lastTitle) {
 
@@ -39,8 +38,7 @@ NowPlaying.prototype = {
             // Check artwork
             if (track.artwork && track.artwork.length &&
                 track.artwork != this.lastArtwork) {
-                $('#artwork').css("background-image", "url('" + track.artwork + "')");
-                this.lastArtwork = track.artwork;
+                this.display_album_image(track.artwork);
             }
             else {
                 $('body').css("background-color", dopplr(track.artist));
@@ -51,13 +49,10 @@ NowPlaying.prototype = {
             // Check favicon
             if (track.favicon && track.favicon.length &&
                 track.favicon != this.lastFavicon) {
-                $("#favicon").remove();
-                $('<link id="favicon" rel="shortcut icon" href="' + track.favicon + '" />').appendTo('head');
-                this.lastFavicon = track.favicon;
+                this.set_favicon(track.favicon);
                 }
             else {
-                $("#favicon").remove();
-                $('<link id="favicon" rel="shortcut icon" href="images/favicon.ico" />').appendTo('head');
+                this.reset_favicon();
             }
 
             // sneaky image one-liner borrowed from TwitSpace™
@@ -72,13 +67,14 @@ NowPlaying.prototype = {
             $('#artist').html('<span class="separator">[silence]</span>');
             document.title = "Now Playing";
             }
+            console.log(track)
         $('#track').html('<a target="linky" href="' + track.url + '">' + track.name + '</a>');
         if (track.artist && track.name)
             $('#lyrics').html('<a target="linky" href="http://lyrics.wikia.com/' + encodeURIComponent(track.artist) + ':' + encodeURIComponent(track.name) + '">Lyrics</a>');
         else
             $('#lyrics').html('');
         if (track.album)
-            $('#album').html('| Album: <a target="linky" href="https://last.fm/music/' + encodeURIComponent(track.artist) + '/' + encodeURIComponent(track.album) + '">' + track.album + '</a>');
+            this.display_album_name(track.artist, track.album);
         else
             $('#album').html('');
         if (track.artist != ' ') {
@@ -92,6 +88,30 @@ NowPlaying.prototype = {
     {
         $('body').css("background-image", "url('" + image.image + "')");
         this.lastArtwork = image.image;
+    },
+
+    display_album_image: function(imageUrl)
+    {
+        $('#artwork').css("background-image", "url('" + imageUrl + "')");
+        this.lastArtwork = imageUrl;
+    },
+
+    display_album_name: function(artist, album)
+    {
+        $('#album').html('| Album: <a target="linky" href="https://last.fm/music/' + encodeURIComponent(artist) + '/' + encodeURIComponent(album) + '">' + album + '</a>');
+    },
+
+    reset_favicon: function()
+    {
+        $("#favicon").remove();
+        $('<link id="favicon" rel="shortcut icon" href="images/favicon.ico" />').appendTo('head');
+    },
+
+    set_favicon: function(faviconUrl)
+    {
+        $("#favicon").remove();
+        $('<link id="favicon" rel="shortcut icon" href="' + faviconUrl + '" />').appendTo('head');
+        this.lastFavicon = faviconUrl;
     },
 
     update: function()
