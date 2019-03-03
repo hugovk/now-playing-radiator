@@ -24,15 +24,15 @@ LastfmAPI.prototype = {
                 'method': method
             }, params),
             // Forces JSONP errors to fire, needs re-evaluation if long polling is used
-            timeout: 2000
+            timeout: 2000,
+            success: function(response) {
+                (response.error ? error : success)(response);
+            },
+            error: function() {
+                // JSONP limitations mean we'll only get timeout errors
+                console.log({error: 0, message: 'HTTP Error'});
+            },
         })
-        .success(function(response) {
-            (response.error ? error : success)(response);
-        })
-        .error(function() {
-            // JSONP limitations mean we'll only get timeout errors
-            console.log({error: 0, message: 'HTTP Error'});
-        });
     },
 
     getNowPlayingTrack: function(user, success, error)
