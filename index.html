@@ -12,10 +12,11 @@
     <link id="favicon" rel="shortcut icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/lastfm.js"></script>
     <script src="js/now-playing.js"></script>
     <script src="js/md5.js"></script>
+    <script src="js/NoSleep.min.js"></script>
 
     <script>
 
@@ -79,6 +80,23 @@
             ]</div>
         </article>
 
+        <input type="button" id="toggle" value="Screensaver is on" />
+        <script>
+            var noSleep = new NoSleep();
+            var wakeLockEnabled = false;
+            var toggleEl = document.querySelector("#toggle");
+            toggleEl.addEventListener('click', function() {
+                if (!wakeLockEnabled) {
+                    noSleep.enable(); // keep the screen on!
+                    wakeLockEnabled = true;
+                    toggleEl.value = "Screensaver is off";
+                } else {
+                    noSleep.disable(); // let the screen turn off.
+                    wakeLockEnabled = false;
+                    toggleEl.value = "Screensaver is on";
+                }
+            }, false);
+        </script>
 
     </div>
 </body>

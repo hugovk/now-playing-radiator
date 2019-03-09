@@ -92,6 +92,10 @@ h1 .separator, h1 #track {
     color: #555;
     text-decoration: none;
 }
-#extras a:hover{
+#extras a:hover {
     text-decoration: underline;
+}
+#toggle {
+    background: #000;
+    color: #555;
 }
