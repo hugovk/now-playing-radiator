@@ -80,7 +80,7 @@
             ]</div>
         </article>
 
-        <input type="button" id="toggle" value="Wake Lock is disabled" />
+        <input type="button" id="toggle" value="Screensaver is on" />
         <script>
             var noSleep = new NoSleep();
             var wakeLockEnabled = false;
@@ -89,13 +89,11 @@
                 if (!wakeLockEnabled) {
                     noSleep.enable(); // keep the screen on!
                     wakeLockEnabled = true;
-                    toggleEl.value = "Wake Lock is enabled";
-                    document.body.style.backgroundColor = "green";
+                    toggleEl.value = "Screensaver is off";
                 } else {
                     noSleep.disable(); // let the screen turn off.
                     wakeLockEnabled = false;
-                    toggleEl.value = "Wake Lock is disabled";
-                    document.body.style.backgroundColor = "";
+                    toggleEl.value = "Screensaver is on";
                 }
             }, false);
         </script>
