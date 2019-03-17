@@ -185,11 +185,8 @@ NowPlaying.prototype = {
 
     updateHeader: function(track)
     {
-        if (track.nowplaying)
-            var status = 'Now playing';
-        else
-            var status = 'Last played';
-        var head = status + ":";
+        const status = track.nowplaying ? 'Now playing' : 'Last played';
+        const head = status + ":";
         $('.header').html(head);
     }
 };
