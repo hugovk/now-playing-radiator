@@ -19,14 +19,14 @@ NowPlaying.prototype = {
 
     display: function(track)
     {
-        if (track.artist == ' ') { // clear images
+        if (track.artist === ' ') { // clear images
             $('#track-artwork img').hide();
             $('body').css("background-color", "#999");
             $('body').css("background-image", "");
             $('#artwork').css("background-image", "");
             this.reset_favicon();
         }
-        else if (track.artist != this.lastArtist && track.name != this.lastTitle) {
+        else if (track.artist !== this.lastArtist && track.name !== this.lastTitle) {
 
             // Get an artist image from Last.fm
             this.api.getArtistInfo(
@@ -37,7 +37,7 @@ NowPlaying.prototype = {
 
             // Check artwork
             if (track.artwork && track.artwork.length &&
-                track.artwork != this.lastArtwork) {
+                track.artwork !== this.lastArtwork) {
                 this.display_album_image(track.artwork);
             }
             else {
@@ -56,7 +56,7 @@ NowPlaying.prototype = {
 
             // Check favicon
             if (track.favicon && track.favicon.length &&
-                track.favicon != this.lastFavicon) {
+                track.favicon !== this.lastFavicon) {
                 this.set_favicon(track.favicon);
                 }
             else {
@@ -67,7 +67,7 @@ NowPlaying.prototype = {
             // var image = "https://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURIComponent(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
             // $('body').css("background-image", "url('" + image + "')");
         }
-        if (track.artist != ' ') {
+        if (track.artist !== ' ') {
             $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="https://last.fm/music/' + encodeURIComponent(track.artist) + '">' + track.artist + '</a>');
             document.title = track.artist + " - " + track.name;
             }
@@ -85,7 +85,7 @@ NowPlaying.prototype = {
             this.display_album_name(track.artist, track.album);
         // else
         //     $('#album').html('');
-        if (track.artist != ' ') {
+        if (track.artist !== ' ') {
             this.lastArtist = track.artist;
             this.lastTitle  = track.name;
         }
