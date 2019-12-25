@@ -9,7 +9,7 @@ body {
     /* background-position: center center; */
     background-position-x: center;
     background-repeat :repeat;
-    /* background-size: cover; */
+     background-size: contain;
     color: #FFF;
     /* image-rendering: pixelated; */
 }
