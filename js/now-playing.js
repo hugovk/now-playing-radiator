@@ -28,7 +28,7 @@ NowPlaying.prototype = {
         }
         else if (track.artist !== this.lastArtist && track.name !== this.lastTitle) {
 
-            // Get an artist image from Last.fm
+            // Get MBID from Last.fm to get an artist image from MusicBrainz
             this.api.getArtistInfo(
                 track.artist,
                 jQuery.proxy(this.handleResponse, this),
@@ -61,10 +61,6 @@ NowPlaying.prototype = {
             else {
                 this.reset_favicon();
             }
-
-            // sneaky image one-liner borrowed from TwitSpace™
-            // var image = "https://ws.audioscrobbler.com/2.0/?method=artist.getimageredirect&artist=" + encodeURIComponent(track.artist) + "&api_key=5f134f063744307ee6f126ac2c480fab&size=original";
-            // $('body').css("background-image", "url('" + image + "')");
         }
         if (track.artist !== ' ') {
             $('#artist').html('<span class="separator" style="color:#009bd5;">by </span> <a target="linky" href="https://last.fm/music/' + encodeURIComponent(track.artist) + '">' + track.artist + '</a>');
@@ -74,7 +70,7 @@ NowPlaying.prototype = {
             $('#artist').html('<span class="separator">[silence]</span>');
             document.title = "Now Playing";
             }
-            console.log(track)
+        // console.table(track);
         $('#track').html('<a target="linky" href="' + track.url + '">' + track.name + '</a>');
         if (track.artist && track.name)
             $('#lyrics').html('<a target="linky" href="http://lyrics.wikia.com/' + encodeURIComponent(track.artist) + ':' + encodeURIComponent(track.name) + '">Lyrics</a>');
