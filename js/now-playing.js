@@ -9,7 +9,8 @@ NowPlaying = function(api, user, interval) {
     this.user = user;
     this.lastArtist = '';
     this.lastTitle  = '';
-    this.lastArtwork = '';
+    this.lastAlbumImage = '';
+    this.lastArtistImage = '';
     this.lastFavicon = '';
 
     /* AutoUpdate frequency - Last.fm API rate limits at 1/sec */
@@ -37,7 +38,7 @@ NowPlaying.prototype = {
 
             // Check artwork
             if (track.artwork && track.artwork.length &&
-                track.artwork !== this.lastArtwork) {
+                track.artwork !== this.lastAlbumImage) {
                 this.display_album_image(track.artwork);
             }
             else {
@@ -90,14 +91,14 @@ NowPlaying.prototype = {
     display_artist_image: function(image)
     {
         $('body').css("background-image", "url('" + image.image + "')");
-        this.lastArtwork = image.image;
+        this.lastArtistImage = image.image;
     },
 
     display_album_image: function(imageUrl)
     {
         if (imageUrl) {
             $('#artwork').css("background-image", "url('" + imageUrl + "')");
-            this.lastArtwork = imageUrl;
+            this.lastAlbumImage = imageUrl;
         }
     },
 
@@ -178,7 +179,7 @@ NowPlaying.prototype = {
         }
 
         // Still no artist image? Use a colour
-        if (!this.lastArtwork.length) {
+        if (!this.lastArtistImage.length) {
             $('body').css("background-color", dopplr(this.lastArtist));
         }
 
