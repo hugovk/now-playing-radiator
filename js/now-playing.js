@@ -41,7 +41,6 @@ NowPlaying.prototype = {
                 this.display_album_image(track.artwork);
             }
             else {
-                $('body').css("background-color", dopplr(track.artist));
                 $('body').css("background-image", "");
                 $('#artwork').css("background-image", "");
 
@@ -181,6 +180,12 @@ NowPlaying.prototype = {
                 this.set_favicon(album.image[0]['#text'] || null);
             }
         }
+
+        // Still no artist image? Use a colour
+        if (!this.lastArtwork.length) {
+            $('body').css("background-color", dopplr(this.lastArtist));
+        }
+
     },
 
     updateHeader: function(track)
