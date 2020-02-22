@@ -82,7 +82,7 @@
         </article>
 
         <button data-toggle-fullscreen>Toggle<br>fullscreen</button>
-        <button id="screensaver">Screensaver<br>is on</button>
+        <button id="screensaver">🕶️ Screensaver<br>is on</button>
         <script>
             var noSleep = new NoSleep();
             var wakeLockEnabled = false;
@@ -91,11 +91,11 @@
                 if (!wakeLockEnabled) {
                     noSleep.enable(); // keep the screen on!
                     wakeLockEnabled = true;
-                    toggleEl.innerHTML = "Screensaver<br>is off";
+                    toggleEl.innerHTML = "💡 Screensaver<br>is off";
                 } else {
                     noSleep.disable(); // let the screen turn off.
                     wakeLockEnabled = false;
-                    toggleEl.innerHTML = "Screensaver<br>is on";
+                    toggleEl.innerHTML = "🕶️ Screensaver<br>is on";
                 }
             }, false);
         </script>
