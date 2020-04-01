@@ -29,6 +29,9 @@ NowPlaying.prototype = {
         }
         else if (track.artist !== this.lastArtist && track.name !== this.lastTitle) {
 
+            // Initialise with artist background colour in case we don't find an image
+            $('body').css("background-color", dopplr(this.lastArtist));
+
             // Get MBID from Last.fm to get an artist image from MusicBrainz
             this.api.getArtistInfo(
                 track.artist,
@@ -177,12 +180,6 @@ NowPlaying.prototype = {
                 this.set_favicon(album.image[0]['#text'] || null);
             }
         }
-
-        // Still no artist image? Use a colour
-        if (!this.lastArtistImage.length) {
-            $('body').css("background-color", dopplr(this.lastArtist));
-        }
-
     },
 
     updateHeader: function(track)
